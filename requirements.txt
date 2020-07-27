@@ -1,0 +1,2 @@
+selenium==3.141.0
+ConfigParser == 5.0.0
