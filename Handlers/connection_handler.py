@@ -6,6 +6,7 @@ def connection_handler():
     connection.settings = "Config/config.ini"
     connection.user_name = "User"
     connection.password = "User"
+    connection.email = "User"
     connection.driver = connection.settings.get('SYSTEM', 'WebDriverPath')
 
     return connection
