@@ -1,7 +1,4 @@
-from Handlers.connection_handler import connection_handler
+from Handlers.instagram_session_handler import sign_in
 
 if __name__ == '__main__':
-    """
-    Add Target URL
-    """
-    connection = connection_handler()
+    sign_in()
