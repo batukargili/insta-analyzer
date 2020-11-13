@@ -3,7 +3,7 @@ from datetime import datetime
 from Models.mongodb_connection import MongoConnection
 from pymongo import MongoClient
 
-from utils.log import init_logger
+from Utils.log import init_logger
 
 logger = init_logger(__name__, testing_mode=False)
 
@@ -31,11 +31,7 @@ def create_connection():
             return None
 
 
-def insert_value():
+def insert_value(post):
     col = create_connection()
-    post = {"follower": "batukargily",
-            "following": "yarennyilmaz",
-            "date": datetime.utcnow()}
     col.insert_one(post)
-    logger.info("Value inserted successfuly")
 
