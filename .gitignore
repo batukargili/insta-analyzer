@@ -1,3 +1,6 @@
 Config/config.ini
 venv
+app.log
+app.error.log
+app.warning.log
 ,gitignore
