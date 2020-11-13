@@ -1,4 +1,4 @@
-from Models.connection import Connection
+from Models.instagram_connection import Connection
 
 
 def connection_handler():
