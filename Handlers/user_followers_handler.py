@@ -17,7 +17,6 @@ def get_user_followers(session, username, max_follower):
     while numberOfFollowersInList < max_follower:
         actionChain.key_down(Keys.SPACE).key_up(Keys.SPACE).perform()
         numberOfFollowersInList = len(followersList.find_elements_by_css_selector('li'))
-        print(numberOfFollowersInList)
 
     followers = []
     for user in followersList.find_elements_by_css_selector('li'):
