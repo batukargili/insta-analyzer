@@ -10,40 +10,44 @@ from Utils.log import init_logger
 logger = init_logger(__name__, testing_mode=False)
 
 
-def get_user_followers(session, username, max_follower):
-
+def get_user_followers(session, username):
     """
     Needs an update!!!
     """
     session.browser.get('https://www.instagram.com/' + username)
-    followersLink = session.browser.find_element_by_css_selector('ul li a')
+    following_count = int(session.browser.find_element_by_xpath('//*[@id="react-root"]/section/main/div/header'
+                                                                '/section/ul '
+                                                                '/li[3]/a/span').text)
+
+    followersLink = session.browser.find_element_by_xpath('//*[@id="react-root"]/section/main/div/header/section/ul'
+                                                          '/li[3]/a')
     followersLink.click()
     time.sleep(2)
-    followersList = session.browser.find_element_by_css_selector('div[role=\'dialog\'] ul')
-    numberOfFollowersInList = len(followersList.find_elements_by_css_selector('li'))
+    followingList = session.browser.find_element_by_css_selector('div[role=\'dialog\'] ul')
+    numberOfFollowersInList = len(followingList.find_elements_by_css_selector('li'))
 
-    followersList.click()
+    followingList.click()
     actionChain = webdriver.ActionChains(session.browser)
-    while numberOfFollowersInList < max_follower:
+
+    while numberOfFollowersInList < following_count:
         actionChain.key_down(Keys.SPACE).key_up(Keys.SPACE).perform()
-        numberOfFollowersInList = len(followersList.find_elements_by_css_selector('li'))
+        numberOfFollowersInList = len(followingList.find_elements_by_css_selector('li'))
 
-    followers = []
-    for user in followersList.find_elements_by_css_selector('li'):
+    following = []
+    for user in followingList.find_elements_by_css_selector('li'):
         userLink = user.find_element_by_css_selector('a').get_attribute('href')
-        followers.append(userLink)
-        if len(followers) == max_follower:
+        following.append(userLink)
+        if len(following) == following_count:
             break
-    return followers
+    return following
 
 
-def etl_data(username,followers):
-    followers = followers
-    for follower in followers:
-        following = follower.split("https://www.instagram.com/",1)[1]
+def get_following_data(username, following_list):
+    following = following_list
+    for followed_user in following:
+        following = followed_user.split('https://www.instagram.com/', 1)[1]
         post = {"follower": username,
                 "following": following,
                 "date": datetime.utcnow()}
         insert_value(post)
     logger.warning("All the values inserted successfuly")
-
