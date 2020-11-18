@@ -11,9 +11,6 @@ logger = init_logger(__name__, testing_mode=False)
 
 
 def get_user_followers(session, username):
-    """
-    Needs an update!!!
-    """
     session.browser.get('https://www.instagram.com/' + username)
     following_count = int(session.browser.find_element_by_xpath('//*[@id="react-root"]/section/main/div/header'
                                                                 '/section/ul '
