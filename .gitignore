@@ -4,3 +4,6 @@ app.log
 app.error.log
 app.warning.log
 ,gitignore
+.vscode
+.idea
+__pycache__

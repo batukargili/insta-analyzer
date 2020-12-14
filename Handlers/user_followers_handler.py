@@ -3,7 +3,6 @@ from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-
 from Handlers.mongodb_handler import insert_value
 from Utils.log import init_logger
 
@@ -32,17 +31,17 @@ def get_user_followers(session, username):
 
     following = []
     for user in followingList.find_elements_by_css_selector('li'):
-        userLink = user.find_element_by_css_selector('a').get_attribute('href')
-        following.append(userLink)
+        user_link = user.find_element_by_css_selector('a').get_attribute('href')
+        user_link = user_link.split('https://www.instagram.com/', 1)[1]
+        user_link = user_link[:-1]
+        following.append(user_link)
         if len(following) == following_count:
             break
     return following
 
 
 def get_following_data(username, following_list):
-    following = following_list
-    for followed_user in following:
-        following = followed_user.split('https://www.instagram.com/', 1)[1]
+    for following in following_list:
         post = {"follower": username,
                 "following": following,
                 "date": datetime.utcnow()}

@@ -7,7 +7,6 @@ from Utils.log import init_logger
 
 logger = init_logger(__name__, testing_mode=False)
 
-
 def get_mongodb_client():
     mongo_connection = MongoConnection()
     mongo_connection.settings = "Config/config.ini"
