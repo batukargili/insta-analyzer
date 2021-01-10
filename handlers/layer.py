@@ -1,5 +1,5 @@
-from Handlers.user_followers_handler import get_user_followers, get_following_data
-from Utils.log import init_logger
+from handlers.followers import get_user_followers, get_following_data
+from utils.log import init_logger
 
 logger = init_logger(__name__, testing_mode=False)
 

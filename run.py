@@ -1,5 +1,5 @@
-from Handlers.instagram_session_handler import sign_in
-from Handlers.n_layer_data_handler import n_layer_data_extraction
+from handlers.session import sign_in
+from handlers.layer import n_layer_data_extraction
 
 if __name__ == '__main__':
     session = sign_in()

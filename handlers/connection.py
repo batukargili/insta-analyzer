@@ -1,9 +1,9 @@
-from Models.instagram_connection import Connection
+from models.connection import Connection
 
 
 def connection_handler():
     connection = Connection()
-    connection.settings = "Config/config.ini"
+    connection.settings = "conf/config.ini"
     connection.user_name = "User"
     connection.password = "User"
     connection.email = "User"

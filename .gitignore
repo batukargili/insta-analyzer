@@ -1,4 +1,4 @@
-Config/config.ini
+conf/config.ini
 venv
 app.log
 app.error.log

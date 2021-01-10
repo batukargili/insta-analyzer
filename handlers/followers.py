@@ -3,8 +3,8 @@ from datetime import datetime
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from Handlers.mongodb_handler import insert_value
-from Utils.log import init_logger
+from handlers.mongodb import insert_value
+from utils.log import init_logger
 
 logger = init_logger(__name__, testing_mode=False)
 

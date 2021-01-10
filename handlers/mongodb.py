@@ -1,15 +1,15 @@
 from datetime import datetime
 
-from Models.mongodb_connection import MongoConnection
+from models.mongodb import MongoConnection
 from pymongo import MongoClient
 
-from Utils.log import init_logger
+from utils.log import init_logger
 
 logger = init_logger(__name__, testing_mode=False)
 
 def get_mongodb_client():
     mongo_connection = MongoConnection()
-    mongo_connection.settings = "Config/config.ini"
+    mongo_connection.settings = "conf/config.ini"
     mongo_connection.port = "MongoDb"
     mongo_connection.host = "MongoDb"
 

@@ -1,7 +1,7 @@
 from selenium.webdriver.common.keys import Keys
 import time
-from Models.instagram_session import InstagramSession
-from Handlers.connection_handler import connection_handler
+from models.session import InstagramSession
+from handlers.connection import connection_handler
 
 
 def create_session():
